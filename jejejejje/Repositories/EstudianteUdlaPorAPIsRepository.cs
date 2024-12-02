@@ -11,7 +11,7 @@ namespace jejejejje.Repositories
 {
     public class EstudianteUdlaPorAPIsRepository : IEstudianteUdlaRepository
     {
-        public string _urlEndpoint
+        public string _urlEndpoint = "https://freetestapi.com/v1/students";
         public bool ActualizarEstudianteUdla(EstudianteUdla estudiante)
         {
             throw new NotImplementedException();
