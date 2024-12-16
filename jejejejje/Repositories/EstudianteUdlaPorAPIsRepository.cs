@@ -58,12 +58,18 @@ namespace jejejejje.Repositories
 
         public IEnumerable<EstudianteUdla> DevuelveListaEstudiantes()
         {
-            throw new NotImplementedException();
+            var listadoEstudiantes = _connection.Table<EstudianteUdla>().ToList();
+            return listadoEstudiantes;
         }
 
         public bool EliminarEstudianteUdla(int id)
         {
-            throw new NotImplementedException();
+            int eliminar = _connection.Delete(id);
+            if (eliminar > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

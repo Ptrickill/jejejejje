@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace jejejejje.Repositories
 {
-    internal class EstudianteUdlaSQLiteRepositoty
+    public class EstudianteUdlaSQLiteRepositoty
     {
     }
 }

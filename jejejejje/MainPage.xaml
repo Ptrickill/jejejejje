@@ -29,7 +29,10 @@
                 x:Name="GuardarEstudiante"
                 Text="GuardarEstudainte"
                 Clicked="GuardarEstudiante_Clicked"/>
-            
+
+            <ListView
+                x:Name="PeopleLsitView" ItemsSource="{Binding EstudianteUdla}"/>
+
 
 
         </VerticalStackLayout>
