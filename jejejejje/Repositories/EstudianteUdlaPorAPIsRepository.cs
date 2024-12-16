@@ -11,7 +11,23 @@ namespace jejejejje.Repositories
 {
     public class EstudianteUdlaPorAPIsRepository : IEstudianteUdlaRepository
     {
-        public string _urlEndpoint = "https://freetestapi.com/v1/students";
+        private static string NombreBD = "EstudianteUDLA.db3";
+        private SQLiteConnection _connection;
+
+        public EstudianteUdlaSQLiteRepositoty()
+        {
+            Init();
+        }
+
+        public void Init()
+        {
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, NombreBD);
+            _connection = new SQLiteConnection(dbPath);
+            _connection.CreateTable<EstudianteUdla>();
+
+        }
+
+
         public bool ActualizarEstudianteUdla(EstudianteUdla estudiante)
         {
             throw new NotImplementedException();
@@ -19,7 +35,20 @@ namespace jejejejje.Repositories
 
         public bool CrearEstudianteUdla(EstudianteUdla estudiante)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int insert = _connection.Insert(estudiante);
+                if (insert > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                throw;
+            }
+
         }
 
         public EstudianteUdla DevuelveEstudiantesUdla(int id)
@@ -29,13 +58,7 @@ namespace jejejejje.Repositories
 
         public IEnumerable<EstudianteUdla> DevuelveListaEstudiantes()
         {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                var response = httpClient.GetAsync(_urlEndpoint).Result;
-                var json_data = response.Content.ReadAsStringAsync().Result;
-
-                List<EstudianteApi> estudianteAPI = JsonConvert.DeserializeObject<List<EstudianteApi>>(json_data);
-            }
+            throw new NotImplementedException();
         }
 
         public bool EliminarEstudianteUdla(int id)
